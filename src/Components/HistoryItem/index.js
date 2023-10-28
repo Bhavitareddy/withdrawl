@@ -1,35 +1,37 @@
 import './index.css'
 
 const HistoryItem = props => {
-  const {historyDetails, deleteHistory} = props
-  const {id, timeAccessed, logoUrl, title, domainUrl} = historyDetails
-
-  const onClickDelete = () => {
-    deleteHistory(id)
+  const {eachHistory, deleteItem} = props
+  const {id, timeAccessed, logoUrl, title, domainUrl} = eachHistory
+  const onDelete = () => {
+    deleteItem(id)
   }
   return (
-    <li className="list-item">
-      <div className="row-container">
-        <div className="row">
-          <p className="time">{timeAccessed}</p>
-          <img src={logoUrl} alt="domain logo" className="image" />
-          <p className="title">{title}</p>
-          <p className="domain">{domain}</p>
+    <li className="list-card-container">
+      <div className="date-card">
+        <p className="time-card">{timeAccessed}</p>
+        <div className="history-info-card">
+          <img src={logoUrl} alt="domain logo" className="logo-img" />
+          <p className="title-card">{title}</p>
+          <p className="url-card">{domainUrl}</p>
         </div>
       </div>
-      <button
-        data-testid="delete"
-        type="button"
-        className="button"
-        onClick={onClickDelete}
-      >
-        <img
-          src="https://assets.ccbp.in/frontend/react-js/delete-img.png"
-          alt="delete"
-          className="delete"
-        />
-      </button>
+      <div className="btn-card">
+        <button
+          type="button"
+          className="btn"
+          onClick={onDelete}
+          data-testid="delete"
+        >
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/delete-img.png"
+            alt="delete"
+            className="logo-img"
+          />
+        </button>
+      </div>
     </li>
   )
 }
+
 export default HistoryItem
